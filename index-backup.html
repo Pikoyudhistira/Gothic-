@@ -1,0 +1,863 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#171516">
+<meta name="description" content="ZELLA LOVE — kisah gothic romance Zella dan Piko.">
+<title>ZELLA LOVE — A Gothic Romance</title>
+
+<style>
+:root {
+  --bg: #171516;
+  --paper: #292526;
+  --paper2: #211e1f;
+  --text: #eee7e5;
+  --muted: #b6a7a5;
+  --red: #9e2636;
+  --red-light: #d44b59;
+  --gold: #a99a80;
+  --line: #554447;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  min-height: 100%;
+  background: var(--bg);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text);
+  font-family: Georgia, "Times New Roman", serif;
+  background:
+    radial-gradient(ellipse at 50% 15%, #403133 0%, transparent 55%),
+    linear-gradient(145deg, #211d1e, #111011 75%);
+}
+
+button { font: inherit; }
+
+.site {
+  width: min(1100px, 100%);
+  margin: 0 auto;
+  padding: 28px 20px 22px;
+}
+
+.brand {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.brand small {
+  display: block;
+  color: var(--gold);
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: clamp(27px, 5vw, 43px);
+  font-weight: normal;
+  letter-spacing: 7px;
+  color: #f3e8e6;
+  text-shadow: 0 0 24px #8e263744;
+}
+
+.brand p {
+  margin: 10px 0 0;
+  font-size: 12px;
+  font-style: italic;
+  letter-spacing: 2px;
+  color: var(--muted);
+}
+
+.ornament {
+  text-align: center;
+  color: var(--red-light);
+  letter-spacing: 8px;
+  margin: 17px 0;
+  font-size: 15px;
+}
+
+.book-frame {
+  position: relative;
+  padding: 13px;
+  background: linear-gradient(135deg, #71605c, #302829 20%, #4c3c3d 50%, #211d1e);
+  border: 1px solid #80686a;
+  box-shadow: 0 25px 70px #000a, 0 0 35px #8c273511;
+}
+
+.book-frame::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid #b3a09355;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.book {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 490px;
+  background: var(--paper);
+  border: 1px solid #120f10;
+  position: relative;
+  overflow: hidden;
+}
+
+.page {
+  position: relative;
+  min-width: 0;
+  min-height: 490px;
+  padding: clamp(22px, 4vw, 48px);
+  background:
+    radial-gradient(ellipse at 30% 25%, #4b393a66, transparent 60%),
+    linear-gradient(135deg, #30292a, #252122);
+}
+
+.page-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid #100d0e;
+  text-align: center;
+  overflow: hidden;
+}
+
+.page-right {
+  background:
+    linear-gradient(90deg, #17131455, transparent 12%),
+    linear-gradient(135deg, #30292a, #242021);
+  display: flex;
+  flex-direction: column;
+}
+
+.page-right::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid #b3a09324;
+  pointer-events: none;
+}
+
+.page-number {
+  color: var(--gold);
+  letter-spacing: 3px;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.chapter-kicker {
+  margin-top: 20px;
+  color: var(--red-light);
+  letter-spacing: 3px;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.chapter-title {
+  font-size: clamp(22px, 3vw, 33px);
+  font-weight: normal;
+  line-height: 1.2;
+  margin: 12px 0 20px;
+  color: #f4e9e6;
+}
+
+.story {
+  font-size: 15px;
+  line-height: 1.95;
+  color: #ded3d0;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+  flex: 1;
+}
+
+.story::first-letter {
+  color: var(--red-light);
+  font-size: 34px;
+  float: left;
+  line-height: 1;
+  padding: 5px 7px 0 0;
+}
+
+.story-end {
+  color: var(--gold);
+  text-align: center;
+  font-size: 12px;
+  font-style: italic;
+  margin-top: 22px;
+  letter-spacing: 1px;
+}
+
+.rose {
+  width: min(82%, 290px);
+  height: auto;
+  max-height: 310px;
+  filter: drop-shadow(0 12px 20px #0008);
+}
+
+.left-caption {
+  color: #c8b8b4;
+  font-size: 13px;
+  line-height: 1.8;
+  font-style: italic;
+  max-width: 280px;
+  margin-top: 18px;
+}
+
+.left-caption strong {
+  color: #e5d5d1;
+  font-weight: normal;
+  letter-spacing: 2px;
+  font-style: normal;
+}
+
+.book-spine {
+  position: absolute;
+  width: 14px;
+  top: 0;
+  bottom: 0;
+  left: calc(50% - 7px);
+  background: linear-gradient(90deg, #0c0a0b66, #6a535455, #0c0a0b66);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin: 22px auto 0;
+}
+
+.nav-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid #80666a;
+  background: #282223;
+  color: #eee0dd;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background .2s, border-color .2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-btn:active {
+  background: var(--red);
+  border-color: var(--red-light);
+}
+
+.nav-btn:disabled {
+  opacity: .3;
+  cursor: default;
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid #a88b8d;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.dot.active {
+  background: var(--red-light);
+  border-color: var(--red-light);
+  box-shadow: 0 0 12px #d44b5966;
+  transform: scale(1.2);
+}
+
+.chapter-status {
+  text-align: center;
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 2px;
+  margin-top: 13px;
+}
+
+.swipe-hint {
+  color: #9e8b89;
+  font-size: 11px;
+  text-align: center;
+  margin: 18px 0 0;
+  letter-spacing: 1px;
+}
+
+.footer {
+  text-align: center;
+  margin: 28px 0 4px;
+  color: #968582;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.footer span { color: var(--red-light); }
+
+@media (max-width: 650px) {
+  .site { padding: 22px 12px 18px; }
+  .brand { margin-bottom: 17px; }
+  .brand h1 { letter-spacing: 5px; }
+  .book-frame { padding: 7px; }
+  .book {
+    grid-template-columns: 1fr;
+    min-height: 0;
+    overflow: hidden;
+  }
+  .page {
+    min-height: 0;
+    padding: 25px 22px;
+  }
+  .page-left {
+    min-height: 230px;
+    border-right: 0;
+    border-bottom: 1px solid #100d0e;
+    padding: 18px;
+  }
+  .rose {
+    width: 155px;
+    max-height: 170px;
+  }
+  .left-caption { margin-top: 5px; }
+  .page-right { min-height: 330px; }
+  .chapter-title { font-size: 26px; }
+  .story { font-size: 14px; line-height: 1.85; }
+  .book-spine { display: none; }
+  .nav { gap: 14px; }
+  .dots { gap: 12px; }
+}
+
+/* Penting untuk swipe di Android:
+   gulir vertikal tetap bisa, swipe horizontal dibaca JavaScript. */
+#bookViewport {
+  touch-action: pan-y;
+}
+
+button:focus-visible {
+  outline: 2px solid var(--red-light);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
+</style>
+</head>
+
+<body>
+<main class="site">
+  <header class="brand">
+    <small>A Tale Written in Shadows</small>
+    <h1>ZELLA LOVE</h1>
+    <p>A Gothic Romance · Kisah Zella &amp; Piko</p>
+    <div class="ornament">— ❦ —</div>
+  </header>
+
+  <section class="book-frame" aria-label="Buku cerita Zella Love">
+    <div class="book" id="bookViewport">
+
+      <section class="page page-left">
+        <div class="page-number">A Love Beyond the Dark</div>
+
+        <svg class="rose" viewBox="0 0 300 340"
+             xmlns="http://www.w3.org/2000/svg"
+             role="img" aria-label="Ilustrasi mawar merah gothic">
+          <defs>
+            <linearGradient id="petal" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ed5963"/>
+              <stop offset=".38" stop-color="#a92034"/>
+              <stop offset="1" stop-color="#3e101b"/>
+            </linearGradient>
+            <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#73816a"/>
+              <stop offset="1" stop-color="#18251d"/>
+            </linearGradient>
+            <radialGradient id="center">
+              <stop offset="0" stop-color="#210910"/>
+              <stop offset=".7" stop-color="#771729"/>
+              <stop offset="1" stop-color="#d34450"/>
+            </radialGradient>
+          </defs>
+
+          <path d="M150 150 C150 210 160 255 147 318"
+                fill="none" stroke="#52634c" stroke-width="5"/>
+          <path d="M151 229 C102 185 69 211 77 245
+                   C106 258 134 245 151 229Z"
+                fill="url(#leaf)" stroke="#18251d" stroke-width="2"/>
+          <path d="M151 271 C189 221 228 239 218 266
+                   C198 286 170 280 151 271Z"
+                fill="url(#leaf)" stroke="#18251d" stroke-width="2"/>
+          <path d="M148 318 C123 297 116 288 108 273
+                   M151 318 C175 292 188 284 202 278"
+                fill="none" stroke="#52634c" stroke-width="2"/>
+
+          <path d="M150 130
+                   C116 106 85 113 82 144
+                   C53 130 39 160 61 181
+                   C43 211 77 232 105 213
+                   C128 240 160 226 164 205
+                   C198 225 224 201 210 176
+                   C238 150 211 120 186 134
+                   C181 103 155 99 150 130Z"
+                fill="url(#petal)" stroke="#5a1523" stroke-width="3"/>
+
+          <path d="M150 135
+                   C129 117 104 137 119 158
+                   C93 174 111 201 136 190
+                   C151 216 180 197 169 178
+                   C196 158 176 135 158 151
+                   C165 130 145 124 150 135Z"
+                fill="url(#petal)" stroke="#6c1526" stroke-width="2"/>
+
+          <path d="M150 145
+                   C132 148 132 166 147 169
+                   C130 183 153 194 163 178
+                   C180 167 167 149 157 158
+                   C162 146 151 140 150 145Z"
+                fill="url(#center)"/>
+
+          <path d="M105 133 C117 120 133 125 140 139
+                   M183 143 C200 145 202 161 191 171
+                   M81 181 C88 197 102 199 114 193
+                   M166 202 C181 211 195 198 195 189"
+                fill="none" stroke="#f27a7e" stroke-opacity=".45"
+                stroke-width="2" stroke-linecap="round"/>
+
+          <path d="M53 111 L58 120 L68 123 L58 127 L53 137
+                   L49 127 L39 123 L49 120Z"
+                fill="#bda99b" opacity=".7"/>
+          <path d="M225 96 L229 104 L238 108 L229 111 L225 120
+                   L221 111 L212 108 L221 104Z"
+                fill="#bda99b" opacity=".6"/>
+          <circle cx="75" cy="91" r="2" fill="#d44b59"/>
+          <circle cx="221" cy="226" r="2" fill="#d44b59"/>
+          <circle cx="238" cy="145" r="1.5" fill="#d8c3a7"/>
+        </svg>
+
+        <div class="left-caption">
+          <strong>FOREVER IN THE DARK</strong><br>
+          Dua hati, satu takdir, dan cinta yang mengalahkan kutukan.
+        </div>
+      </section>
+
+      <section class="page page-right">
+        <div class="page-number" id="pageNumber">BAB I · 01</div>
+        <div class="chapter-kicker" id="chapterKicker">Permulaan</div>
+        <h2 class="chapter-title" id="chapterTitle">Hutan yang Berbisik</h2>
+        <article class="story" id="storyText"></article>
+        <div class="story-end" id="storyEnd">— Bersambung —</div>
+      </section>
+
+      <div class="book-spine" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <nav class="nav" aria-label="Navigasi bab">
+    <button class="nav-btn" id="prevBtn" type="button"
+            aria-label="Bab sebelumnya" title="Bab sebelumnya">‹</button>
+    <div class="dots" id="chapterDots"></div>
+    <button class="nav-btn" id="nextBtn" type="button"
+            aria-label="Bab berikutnya" title="Bab berikutnya">›</button>
+  </nav>
+
+  <div class="chapter-status" id="chapterStatus" aria-live="polite">
+    BAB 1 DARI 8
+  </div>
+  <p class="swipe-hint">✧ GESER KIRI ATAU KANAN UNTUK MEMBACA ✧</p>
+
+  <footer class="footer">
+    MADE WITH <span>♥</span> · ZELLA LOVE
+  </footer>
+</main>
+
+<audio id="music" loop preload="auto">
+  <source src="./Fairy%20Of%20The%20Forest.m4a" type="audio/mp4">
+</audio>
+
+<script>
+"use strict";
+
+const chapters = [
+  {
+    kicker: "Permulaan",
+    title: "Hutan yang Berbisik",
+    text: `Malam itu, kabut menyelimuti hutan tua di pinggir sebuah desa yang terlupakan. Pepohonan menjulang seperti penjaga rahasia, sementara bulan menggantung pucat di antara ranting-ranting hitam.
+
+Zella berjalan sendirian menyusuri jalan setapak. Ia tidak tahu mengapa hatinya terus membawanya ke tempat itu. Ada suara lirih yang seolah memanggil namanya dari balik pepohonan.
+
+Lalu ia melihat seorang pemuda berdiri di dekat pohon tua. Mantelnya gelap, wajahnya tenang, dan matanya menyimpan kesedihan yang sulit dijelaskan.
+
+Namanya Piko.
+
+“Seharusnya kau tidak datang ke sini,” kata Piko.
+
+“Lalu mengapa aku merasa tempat ini memanggilku?” jawab Zella.
+
+Piko terdiam. Untuk pertama kalinya setelah bertahun-tahun, hutan yang selalu sunyi itu dipenuhi suara burung malam.
+
+Ia belum tahu bahwa pertemuan singkat tersebut akan mengubah takdir mereka selamanya.`
+  },
+  {
+    kicker: "Rahasia",
+    title: "Bayangan Masa Lalu",
+    text: `Sejak pertemuan itu, Zella kembali ke hutan hampir setiap senja. Piko selalu berada di tempat yang sama, seolah telah menunggunya jauh sebelum mereka saling mengenal.
+
+Sedikit demi sedikit, Piko menceritakan kisah rumah tua di balik bukit. Dahulu keluarganya tinggal di sana, sampai sebuah janji yang dilanggar mendatangkan kutukan.
+
+Setiap malam, bayangan hitam muncul di sekitar rumah. Lonceng tua berdentang tanpa disentuh, dan nama-nama orang yang telah tiada terdengar di antara angin.
+
+“Aku takut suatu hari bayangan itu akan mengambil semua yang kusayangi,” bisik Piko.
+
+Zella menatapnya tanpa berpaling. “Kau tidak harus menghadapi semuanya sendirian.”
+
+Di bawah pohon yang akarnya menjalar seperti tangan, mereka menemukan sebuah liontin berukir mawar. Di baliknya terdapat tulisan yang hampir terhapus: cinta sejati akan membuka pintu yang ditutup oleh ketakutan.
+
+Namun dari kejauhan, sepasang mata merah mengawasi mereka.`
+  },
+  {
+    kicker: "Kedekatan",
+    title: "Mawar di Tengah Malam",
+    text: `Musim berganti, dan pertemuan mereka menjadi bagian paling dinantikan dalam hidup masing-masing. Piko mengajari Zella mengenali bintang, sedangkan Zella membawa kehangatan ke dalam kesunyian yang telah lama menyelimuti hati Piko.
+
+Pada suatu malam, Piko memberikan setangkai mawar merah kepadanya.
+
+“Bunga ini akan layu,” kata Zella sambil tersenyum.
+
+“Mungkin. Tapi alasan aku memberikannya kepadamu tidak akan berubah.”
+
+Di bawah cahaya bulan, Zella menyadari bahwa ia telah jatuh cinta. Piko pun merasakan hal yang sama, meski ia takut mengakuinya.
+
+Ketika tangan mereka bersentuhan, liontin mawar itu mendadak bersinar. Untuk sesaat, seluruh hutan dipenuhi cahaya keemasan.
+
+Kemudian terdengar suara dari rumah tua.
+
+“Cinta akan menjadi kelemahanmu, Piko.”
+
+Piko menarik tangannya. Ia tahu kutukan itu telah menyadari kehadiran Zella.
+
+Dan untuk pertama kalinya, ia mempertimbangkan untuk menjauh demi melindungi perempuan yang dicintainya.`
+  },
+  {
+    kicker: "Ujian",
+    title: "Kutukan Sang Penjaga",
+    text: `Piko menghilang selama tiga hari. Ketika Zella akhirnya menemukannya, ia berdiri di depan gerbang rumah tua dengan wajah pucat.
+
+Kutukan itu telah mengungkapkan syarat terakhirnya: sebelum bulan merah tiba, Piko harus meninggalkan semua orang yang dicintainya. Jika tidak, bayangan akan menelan rumah dan desa mereka.
+
+“Aku tidak ingin kehilanganmu,” kata Piko. “Pergilah sebelum terlambat.”
+
+Zella menggenggam liontin mawar itu. “Cinta bukan berarti tidak pernah takut. Cinta berarti kita tetap berani meski ketakutan ada di depan kita.”
+
+Mereka masuk ke rumah tua dan menemukan sebuah buku yang ditinggalkan leluhur Piko. Di dalamnya tertulis bahwa kutukan itu berasal dari pengkhianatan dan kesepian, bukan dari cinta.
+
+Untuk mematahkannya, seseorang harus berani mengatakan kebenaran yang telah disembunyikan selama beberapa generasi.
+
+Di halaman terakhir, sebuah kalimat ditulis dengan tinta merah:
+
+Jangan lawan kegelapan dengan kebencian. Bawalah cahaya ke tempat yang paling ditakuti.`
+  },
+  {
+    kicker: "Keberanian",
+    title: "Cahaya yang Kembali",
+    text: `Pada malam bulan merah, angin mengguncang rumah tua. Bayangan bergerak di dinding, dan pintu-pintu terbuka dengan sendirinya.
+
+Piko berdiri di depan Zella, bersiap menghadapi apa pun yang datang. Namun Zella menggenggam tangannya dan melangkah maju bersama.
+
+Mereka membaca isi buku itu dengan lantang. Kisah leluhur Piko akhirnya terungkap: seseorang pernah mengorbankan kebahagiaannya sendiri karena percaya bahwa cinta selalu berakhir dengan kehilangan.
+
+Ketakutan itulah yang diwariskan menjadi kutukan.
+
+“Aku tidak akan membiarkan ketakutan menentukan masa depan kita,” ujar Piko.
+
+“Dan aku memilih masa depan itu bersamamu,” jawab Zella.
+
+Liontin mawar memancarkan cahaya yang memenuhi seluruh ruangan. Bayangan hitam bergetar, kemudian pecah menjadi debu yang terbawa angin malam.
+
+Lonceng tua berhenti berdentang. Untuk pertama kalinya setelah bertahun-tahun, hutan menjadi sunyi dengan cara yang damai.
+
+Pagi menyingsing di balik bukit.
+
+Kutukan itu telah berakhir, dan Piko akhirnya bebas dari masa lalunya.`
+  },
+  {
+    kicker: "Janji",
+    title: "Di Bawah Langit yang Sama",
+    text: `Setelah malam kutukan berlalu, rumah tua tidak lagi terasa menakutkan. Jendelanya dibuka, taman yang lama terbengkalai mulai dirawat, dan mawar merah tumbuh kembali di sepanjang pagar.
+
+Piko membawa Zella ke tempat pertama kali mereka bertemu. Pohon tua itu masih berdiri, tetapi kini sinar matahari menembus dedaunannya.
+
+“Aku pernah berpikir hidupku hanya akan berisi bayangan,” kata Piko. “Lalu kau datang.”
+
+Zella tersenyum. “Aku juga pernah takut pada hal-hal yang tidak kupahami. Sekarang aku tahu bahwa kita bisa menemukan keberanian bersama.”
+
+Piko berlutut dan mengeluarkan cincin sederhana. Tidak ada istana, tidak ada permata berkilauan, hanya sebuah cincin dan janji yang diucapkan dengan tulus.
+
+“Zella, maukah kau menjalani hari-hari yang akan datang bersamaku?”
+
+Air mata bahagia mengalir di pipi Zella.
+
+“Ya. Selama kita saling memilih, aku akan tetap di sisimu.”
+
+Di bawah langit senja, mereka berjanji untuk membangun kehidupan yang tidak lagi dikendalikan ketakutan.`
+  },
+  {
+    kicker: "Selamanya",
+    title: "Pernikahan di Tepi Hutan",
+    text: `Hari pernikahan mereka tiba pada awal musim semi. Udara sejuk membawa aroma tanah basah dan bunga liar, sementara cahaya matahari menyinari halaman kecil di dekat hutan.
+
+Zella mengenakan gaun sederhana dengan hiasan mawar merah. Piko menunggunya di bawah lengkungan ranting dan bunga putih.
+
+Tidak ada kemewahan berlebihan. Hanya orang-orang yang mereka sayangi, beberapa lentera, dan musik lembut yang terdengar di antara pepohonan.
+
+Saat mereka mengucapkan janji, angin menggoyangkan bunga-bunga seolah hutan turut memberikan restu.
+
+Mereka berjanji untuk saling mendengarkan, saling menjaga, dan tetap berjalan bersama ketika hari-hari tidak mudah.
+
+Malam itu, rumah kecil mereka dipenuhi tawa. Piko menari bersama Zella di bawah cahaya lampu, lalu mereka duduk berdua memandang bintang.
+
+“Apakah kau menyesal pernah memasuki hutan itu?” tanya Piko.
+
+Zella menyandarkan kepala di bahunya.
+
+“Tidak. Karena di sanalah aku menemukan rumah.”
+
+Dan di luar jendela, mawar merah bermekaran tanpa bayangan yang mengganggunya.`
+  },
+  {
+    kicker: "Akhir yang Bahagia",
+    title: "Rumah Kecil di Perbukitan",
+    text: `Tahun-tahun berlalu dengan tenang. Zella dan Piko meninggalkan rumah tua dan memilih tinggal di sebuah rumah sederhana di perbukitan yang sejuk, jauh dari hiruk-pikuk kota.
+
+Rumah itu memiliki jendela lebar, kebun kecil, dan beranda tempat mereka menikmati teh ketika kabut turun. Pada pagi hari, suara burung membangunkan mereka. Pada malam hari, langit dipenuhi bintang.
+
+Kebahagiaan mereka semakin lengkap ketika seorang putra lahir ke dunia. Piko menggendongnya dengan tangan gemetar, sementara Zella tersenyum lelah namun bahagia.
+
+Beberapa tahun kemudian, seorang putri kecil menyusul. Kini rumah mereka dipenuhi langkah kaki, cerita sebelum tidur, dan tawa yang terdengar sampai ke kebun.
+
+Kadang-kadang, Piko menceritakan kepada kedua anaknya tentang hutan tua dan mawar merah yang mengubah hidupnya. Zella akan menambahkan bahwa keberanian bukan berarti tidak merasa takut, melainkan memilih kebaikan meski rasa takut datang.
+
+Pada suatu senja, mereka berempat duduk di beranda menyaksikan matahari tenggelam di balik bukit.
+
+Piko menggenggam tangan Zella.
+
+Mereka telah melewati misteri, kesedihan, dan kutukan. Pada akhirnya, hadiah terbesar mereka bukanlah keajaiban atau kekuatan, melainkan rumah sederhana yang penuh kasih.
+
+Dan di sanalah kisah mereka berakhir—bukan dalam kegelapan, melainkan dalam kedamaian.
+
+Di bawah langit yang sejuk, Zella dan Piko hidup bahagia bersama kedua anak mereka, hari ini dan selama-lamanya.`
+  }
+];
+
+const book = document.getElementById("bookViewport");
+const titleEl = document.getElementById("chapterTitle");
+const kickerEl = document.getElementById("chapterKicker");
+const storyEl = document.getElementById("storyText");
+const pageNumberEl = document.getElementById("pageNumber");
+const statusEl = document.getElementById("chapterStatus");
+const storyEndEl = document.getElementById("storyEnd");
+const dotsEl = document.getElementById("chapterDots");
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+const music = document.getElementById("music");
+
+let current = 0;
+let startX = 0;
+let startY = 0;
+let tracking = false;
+let startTarget = null;
+let moved = false;
+
+function startMusic() {
+  if (!music) return;
+  music.play().catch(() => {
+    // Browser mungkin menolak autoplay.
+    // Musik akan dicoba lagi saat pengguna berinteraksi.
+  });
+}
+
+function buildDots() {
+  dotsEl.replaceChildren();
+
+  chapters.forEach((chapter, index) => {
+    const dot = document.createElement("button");
+    dot.type = "button";
+    dot.className = "dot";
+    dot.setAttribute("aria-label", "Buka bab " + (index + 1));
+    dot.addEventListener("click", () => {
+      showChapter(index);
+      startMusic();
+    });
+    dotsEl.appendChild(dot);
+  });
+}
+
+function showChapter(index) {
+  current = Math.max(0, Math.min(chapters.length - 1, index));
+  const chapter = chapters[current];
+
+  titleEl.textContent = chapter.title;
+  kickerEl.textContent = chapter.kicker;
+  storyEl.textContent = chapter.text;
+  pageNumberEl.textContent =
+    "BAB " + roman(current + 1) + " · " +
+    String(current + 1).padStart(2, "0");
+  statusEl.textContent =
+    "BAB " + (current + 1) + " DARI " + chapters.length;
+
+  storyEndEl.textContent =
+    current === chapters.length - 1
+      ? "— Tamat dengan bahagia ♥ —"
+      : "— Bersambung —";
+
+  [...dotsEl.children].forEach((dot, index) => {
+    dot.classList.toggle("active", index === current);
+    dot.setAttribute("aria-current",
+      index === current ? "step" : "false");
+  });
+
+  prevBtn.disabled = current === 0;
+  nextBtn.disabled = current === chapters.length - 1;
+}
+
+function roman(number) {
+  return ["I", "II", "III", "IV", "V", "VI", "VII", "VIII"][number - 1];
+}
+
+prevBtn.addEventListener("click", () => {
+  showChapter(current - 1);
+  startMusic();
+});
+
+nextBtn.addEventListener("click", () => {
+  showChapter(current + 1);
+  startMusic();
+});
+
+/*
+ * Swipe Android/iPhone.
+ * Horizontal gesture dibaca sebagai pergantian bab.
+ * Gerakan vertikal tetap menjadi gulir halaman biasa.
+ */
+book.addEventListener("touchstart", (event) => {
+  if (event.touches.length !== 1) {
+    tracking = false;
+    return;
+  }
+
+  const touch = event.touches[0];
+  startX = touch.clientX;
+  startY = touch.clientY;
+  startTarget = event.target;
+  tracking = true;
+  moved = false;
+}, { passive: true });
+
+book.addEventListener("touchmove", (event) => {
+  if (!tracking || event.touches.length !== 1) return;
+
+  const touch = event.touches[0];
+  const dx = touch.clientX - startX;
+  const dy = touch.clientY - startY;
+
+  if (Math.abs(dx) > 12 && Math.abs(dx) > Math.abs(dy)) {
+    moved = true;
+  }
+}, { passive: true });
+
+book.addEventListener("touchend", (event) => {
+  if (!tracking) return;
+  tracking = false;
+
+  if (!event.changedTouches.length) return;
+
+  const touch = event.changedTouches[0];
+  const dx = touch.clientX - startX;
+  const dy = touch.clientY - startY;
+
+  if (Math.abs(dx) < 45) return;
+  if (Math.abs(dx) < Math.abs(dy) * 1.15) return;
+
+  // Geser ke kiri: bab berikutnya.
+  // Geser ke kanan: bab sebelumnya.
+  const nextIndex = current + (dx < 0 ? 1 : -1);
+
+  if (nextIndex >= 0 && nextIndex < chapters.length) {
+    showChapter(nextIndex);
+    startMusic();
+  }
+}, { passive: true });
+
+book.addEventListener("touchcancel", () => {
+  tracking = false;
+  moved = false;
+}, { passive: true });
+
+/* Dukungan mouse/trackpad pada komputer. */
+let mouseStartX = null;
+let mouseStartY = null;
+
+book.addEventListener("pointerdown", (event) => {
+  if (event.pointerType !== "mouse") return;
+  if (event.button !== 0) return;
+
+  mouseStartX = event.clientX;
+  mouseStartY = event.clientY;
+});
+
+book.addEventListener("pointerup", (event) => {
+  if (mouseStartX === null || mouseStartY === null) return;
+
+  const dx = event.clientX - mouseStartX;
+  const dy = event.clientY - mouseStartY;
+  mouseStartX = null;
+  mouseStartY = null;
+
+  if (Math.abs(dx) < 45) return;
+  if (Math.abs(dx) < Math.abs(dy) * 1.15) return;
+
+  const nextIndex = current + (dx < 0 ? 1 : -1);
+  if (nextIndex >= 0 && nextIndex < chapters.length) {
+    showChapter(nextIndex);
+    startMusic();
+  }
+});
+
+book.addEventListener("pointercancel", () => {
+  mouseStartX = null;
+  mouseStartY = null;
+});
+
+/* Tombol panah keyboard. */
+document.addEventListener("keydown", (event) => {
+  if (event.key === "ArrowRight") showChapter(current + 1);
+  if (event.key === "ArrowLeft") showChapter(current - 1);
+});
+
+buildDots();
+showChapter(0);
+</script>
+</body>
+</html>
