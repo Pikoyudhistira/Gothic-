@@ -1,316 +1,912 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#070711">
-<meta name="description" content="Surat malam dari PIKO untuk seseorang yang istimewa.">
-<title>PIKO ♡ ZELLA — Good Night</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#302c2d">
+<meta name="description" content="ZELLA LOVE — a gothic romance story of Zella and Piko.">
+<title>ZELLA LOVE — Gothic Romance</title>
 
 <style>
 :root {
-  --pink: #ff4fd8;
-  --cyan: #00eaff;
-  --purple: #a66bff;
-  --bg: #070711;
-  --text: #eeeaff;
-  --muted: #aaa7c5;
+  --outside: #373233;
+  --paper: #201b1c;
+  --ink: #eee6e2;
+  --muted: #c2b7b5;
+  --silver: #aaa0a0;
+  --blood: #8d182a;
+  --blood-light: #b92c40;
+  --edge: #c7b49b;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+* { box-sizing: border-box; }
+
+html { min-height: 100%; background: #211d1e; }
 
 body {
+  margin: 0;
   min-height: 100vh;
-  padding: 24px 15px 40px;
-  color: var(--text);
-  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
   background:
-    radial-gradient(ellipse at 10% 0%, #48134855, transparent 45%),
-    radial-gradient(ellipse at 100% 100%, #003b5555, transparent 45%),
-    var(--bg);
+    radial-gradient(ellipse at 50% 0%, #5a5252 0%, transparent 55%),
+    radial-gradient(ellipse at 0% 70%, #494243 0%, transparent 50%),
+    linear-gradient(145deg, #464041, #242021 65%, #393233);
+  overflow-x: hidden;
 }
+
+button { font: inherit; }
 
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
-  opacity: .13;
-  background-image:
-    linear-gradient(#00eaff22 1px, transparent 1px),
-    linear-gradient(90deg, #00eaff22 1px, transparent 1px);
-  background-size: 35px 35px;
+  opacity: .16;
+  z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.78' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
 }
+
+.outer-ornament {
+  position: fixed;
+  z-index: 0;
+  pointer-events: none;
+  color: rgba(10, 9, 9, .24);
+  font-size: clamp(5rem, 15vw, 12rem);
+  line-height: 1;
+}
+
+.outer-ornament.one { top: -30px; right: -20px; }
+.outer-ornament.two { bottom: -45px; left: -35px; transform: rotate(180deg); }
 
 main {
   position: relative;
-  width: min(680px, 100%);
-  margin: 0 auto;
+  z-index: 1;
+  width: min(1080px, 96%);
+  margin: auto;
+  padding: 27px 0 24px;
 }
 
-.top {
+.masthead {
   text-align: center;
-  padding: 22px 10px 30px;
+  margin: 0 auto 23px;
 }
 
-.brand {
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 7px;
-  color: var(--pink);
-  text-shadow: 0 0 15px #ff4fd877;
+.masthead .eyebrow {
+  color: #d3c9c7;
+  font-size: clamp(.57rem, 1.4vw, .76rem);
+  letter-spacing: .38em;
+  text-transform: uppercase;
 }
 
-.line {
-  width: 65px;
-  height: 2px;
-  margin: 17px auto;
-  background: linear-gradient(90deg, var(--pink), var(--cyan));
-  box-shadow: 0 0 12px var(--cyan);
+.masthead h1 {
+  margin: 11px 0 6px;
+  font-weight: normal;
+  font-size: clamp(1.9rem, 6vw, 3.8rem);
+  line-height: 1.12;
+  letter-spacing: .17em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 15px #100d0e;
 }
 
-.eyebrow {
-  color: var(--cyan);
-  font-size: 10px;
-  letter-spacing: 3px;
+.masthead h1 span { color: #b3a5a5; }
+
+.masthead p {
+  margin: 8px 0 0;
+  color: #d1c4c1;
+  font-size: .79rem;
+  font-style: italic;
+  letter-spacing: .12em;
 }
 
-h1 {
-  margin-top: 18px;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(34px, 7vw, 49px);
-  font-weight: 400;
-  line-height: 1.25;
-  background: linear-gradient(100deg, var(--pink), #fff, var(--cyan));
-  color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
+/* Buku terbuka dengan dua halaman */
+.book-frame {
+  padding: 0 9px;
+  filter: drop-shadow(0 18px 24px rgba(0,0,0,.58));
 }
 
-.intro {
-  margin-top: 13px;
-  color: var(--muted);
-  font-size: 13px;
-}
-
-.letter {
+.book {
   position: relative;
-  padding: clamp(23px, 6vw, 42px);
-  border: 1px solid #ff4fd844;
-  border-radius: 15px;
-  background: #0d0c1beF;
-  box-shadow: 0 0 40px #ff4fd80b, 0 0 70px #00eaff09;
-  animation: appear 1s ease both;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  aspect-ratio: 1.55 / 1;
+  min-height: 430px;
+  max-height: 650px;
+  border-left: 12px solid var(--edge);
+  border-right: 12px solid var(--edge);
+  background: #171314;
+  box-shadow: 0 0 0 1px #e1cfb6, inset 0 0 0 2px #655653;
+  overflow: hidden;
 }
 
-.letter::before {
+.book::before {
   content: "";
   position: absolute;
-  top: -1px;
-  left: 25%;
-  width: 50%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--cyan), var(--pink), transparent);
-}
-
-.sender {
-  text-align: center;
-  margin-bottom: 29px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid #ffffff12;
-}
-
-.sender-label {
-  color: var(--muted);
-  font-size: 10px;
-  letter-spacing: 3px;
-}
-
-.sender-name {
-  margin-top: 10px;
-  color: var(--pink);
-  font-size: 25px;
-  font-weight: 600;
-  letter-spacing: 5px;
-  text-shadow: 0 0 18px #ff4fd855;
-}
-
-.sender-note {
-  margin-top: 8px;
-  color: var(--cyan);
-  font-size: 11px;
-  letter-spacing: 1px;
-}
-
-.message {
-  color: #deddf1;
-  font-size: 14px;
-  line-height: 2;
-  overflow-wrap: anywhere;
-}
-
-.message p {
-  margin-bottom: 19px;
-}
-
-.message .greeting {
-  color: var(--pink);
-  font-size: 16px;
-}
-
-.message p:last-child {
-  margin-bottom: 0;
-}
-
-.signature {
-  margin-top: 32px;
-  text-align: center;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 26px;
-  line-height: 1.8;
-  color: var(--pink);
-}
-
-.signature span {
-  color: var(--cyan);
-}
-
-.end-mark {
-  margin-top: 22px;
-  text-align: center;
-  color: var(--pink);
-  letter-spacing: 8px;
-  animation: glow 2s ease-in-out infinite alternate;
-}
-
-footer {
-  padding-top: 27px;
-  text-align: center;
-  color: #77758f;
-  font-size: 10px;
-  line-height: 2.2;
-  letter-spacing: 2px;
-}
-
-footer span {
-  color: var(--pink);
-}
-
-.heart {
-  position: fixed;
   z-index: 5;
-  bottom: -25px;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 25px;
+  transform: translateX(-50%);
   pointer-events: none;
-  animation: float-up linear forwards;
+  background: linear-gradient(
+    90deg,
+    rgba(0,0,0,.58),
+    rgba(0,0,0,.08) 25%,
+    rgba(0,0,0,.58) 52%,
+    rgba(0,0,0,.12)
+  );
 }
 
-@keyframes appear {
-  from { opacity: 0; transform: translateY(15px); }
+.book::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  box-shadow: inset 0 0 35px rgba(0,0,0,.65);
+}
+
+.page-left,
+.page-right {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 40%, rgba(116,39,47,.23), transparent 62%),
+    linear-gradient(140deg, #282122, #171314 70%, #241a1c);
+}
+
+.page-left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid rgba(219,198,181,.12);
+}
+
+.page-left::before,
+.page-right::before {
+  content: "❦";
+  position: absolute;
+  z-index: 0;
+  color: rgba(4,3,3,.67);
+  font-size: clamp(7rem, 18vw, 15rem);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.page-left::before {
+  left: -10%;
+  bottom: -14%;
+  transform: rotate(12deg);
+}
+
+.page-left::after {
+  content: "❧";
+  position: absolute;
+  bottom: -19%;
+  right: -10%;
+  color: rgba(5,4,4,.72);
+  font-size: clamp(7rem, 18vw, 14rem);
+  transform: rotate(-30deg);
+  pointer-events: none;
+}
+
+.artwork {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.art-glow {
+  position: absolute;
+  width: 70%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(133,20,38,.24), transparent 70%);
+}
+
+.moon {
+  position: absolute;
+  top: 8%;
+  left: 10%;
+  width: 17%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 32%, #e6dddd, #aaa0a0 60%, #63595a);
+  opacity: .52;
+  box-shadow: 0 0 25px rgba(205,185,185,.18);
+}
+
+.moon::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 25%;
+  top: -4%;
+  border-radius: 50%;
+  background: #20191b;
+}
+
+.rose-svg {
+  position: relative;
+  z-index: 2;
+  width: 87%;
+  max-height: 94%;
+  filter: drop-shadow(0 12px 10px rgba(0,0,0,.65));
+}
+
+.art-caption {
+  position: absolute;
+  z-index: 3;
+  bottom: 8%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: #d4c8c5;
+  font-size: clamp(.47rem, 1vw, .68rem);
+  letter-spacing: .27em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 8px #000;
+}
+
+.art-caption span { color: #b43a49; }
+
+.art-corner {
+  position: absolute;
+  z-index: 2;
+  color: rgba(172,154,148,.26);
+  font-size: clamp(2rem, 6vw, 5rem);
+  line-height: 1;
+}
+
+.art-corner.top { top: 2%; right: 4%; }
+.art-corner.bottom { bottom: 1%; left: 4%; transform: rotate(180deg); }
+
+.page-right {
+  padding: clamp(19px, 4vw, 44px) clamp(20px, 4vw, 46px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(ellipse at 75% 25%, rgba(112,37,45,.17), transparent 50%),
+    linear-gradient(120deg, #211a1b, #181415 70%, #21191a);
+}
+
+.page-right::before {
+  right: -9%;
+  bottom: -16%;
+  transform: rotate(175deg);
+  font-size: clamp(7rem, 16vw, 13rem);
+}
+
+.page-right::after {
+  content: "❧";
+  position: absolute;
+  z-index: 0;
+  bottom: -13%;
+  left: -8%;
+  color: rgba(5,4,4,.7);
+  font-size: clamp(6rem, 14vw, 11rem);
+  transform: rotate(10deg);
+  pointer-events: none;
+}
+
+.story-wrap {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-height: 100%;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #6d343b transparent;
+  padding: 3px 1px 12px;
+  animation: pageIn .45s ease;
+}
+
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(5px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes glow {
-  from { text-shadow: 0 0 4px #ff4fd833; }
-  to { text-shadow: 0 0 17px #ff4fd899; }
+.chapter-label {
+  text-align: center;
+  color: #bdb0ae;
+  font-size: clamp(.52rem, 1.1vw, .68rem);
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
 }
 
-@keyframes float-up {
-  0% { transform: translateY(0) rotate(0); opacity: 0; }
-  15% { opacity: .7; }
-  100% { transform: translateY(-110vh) rotate(35deg); opacity: 0; }
+.chapter-title {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: normal;
+  font-size: clamp(1.05rem, 2.6vw, 1.9rem);
+  line-height: 1.25;
+  letter-spacing: .035em;
+  margin: 0 0 15px;
+  color: #f0e8e4;
 }
 
-@media (max-width: 420px) {
-  body { padding: 12px 12px 28px; }
-  .top { padding-top: 22px; }
-  .message { font-size: 13px; line-height: 1.95; }
-  .letter { border-radius: 12px; }
+.rule {
+  width: 56px;
+  height: 1px;
+  margin: 0 auto 17px;
+  background: linear-gradient(90deg, transparent, #a63140, #d5c6c0, transparent);
+}
+
+.story-text {
+  color: #e3d9d5;
+  font-size: clamp(.69rem, 1.23vw, .88rem);
+  line-height: 1.65;
+  text-align: justify;
+  overflow-wrap: anywhere;
+}
+
+.story-text p { margin: 0 0 12px; }
+
+.story-text .quote {
+  text-align: center;
+  color: #d3b9b9;
+  font-style: italic;
+  margin-top: 16px;
+}
+
+.story-end {
+  text-align: center;
+  color: #a83a49;
+  letter-spacing: .32em;
+  margin-top: 13px;
+  font-size: .85rem;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 19px;
+}
+
+.nav button {
+  cursor: pointer;
+  color: #e9dfdc;
+  border: 1px solid #746061;
+  background: rgba(19,15,16,.85);
+  padding: 10px 15px;
+  min-height: 40px;
+  font-size: .8rem;
+  transition: .2s ease;
+}
+
+.nav button:hover {
+  background: #351b20;
+  border-color: #a83847;
+}
+
+.nav button:disabled { opacity: .3; cursor: default; }
+
+.dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+
+.dots button {
+  padding: 0;
+  min-height: 0;
+  width: 7px;
+  height: 7px;
+  border: 0;
+  border-radius: 50%;
+  background: #8a7b7b;
+}
+
+.dots button.active {
+  background: #b72c40;
+  box-shadow: 0 0 8px #a3293c;
+  transform: scale(1.25);
+}
+
+.hint {
+  text-align: center;
+  color: #d0c2c0;
+  margin: 12px 0 0;
+  font-size: .72rem;
+  letter-spacing: .05em;
+}
+
+.footer {
+  margin-top: 22px;
+  text-align: center;
+  color: #c3b6b4;
+  font-size: .73rem;
+  line-height: 1.9;
+  letter-spacing: .07em;
+}
+
+.footer .red { color: #b93b4c; }
+
+/* HP: buku tetap terbuka dua halaman berdampingan */
+@media (max-width: 650px) {
+  main { width: 97%; padding-top: 20px; }
+  .masthead { margin-bottom: 18px; }
+  .masthead h1 { letter-spacing: .09em; }
+  .book-frame { padding: 0 3px; }
+
+  .book {
+    min-height: 0;
+    max-height: none;
+    aspect-ratio: 0.79 / 1;
+    border-left-width: 6px;
+    border-right-width: 6px;
+  }
+
+  .book::before { width: 12px; }
+
+  .page-left, .page-right { min-width: 0; }
+
+  .page-right {
+    padding: 15px 10px;
+  }
+
+  .page-left::before { font-size: 5rem; }
+  .page-left::after { font-size: 5rem; }
+  .page-right::before { font-size: 5rem; }
+  .page-right::after { font-size: 4rem; }
+
+  .chapter-label {
+    font-size: .43rem;
+    letter-spacing: .11em;
+    margin-bottom: 8px;
+  }
+
+  .chapter-title {
+    font-size: clamp(.7rem, 3.3vw, 1.05rem);
+    margin-bottom: 10px;
+    line-height: 1.28;
+  }
+
+  .rule { width: 36px; margin-bottom: 11px; }
+
+  .story-text {
+    font-size: clamp(.54rem, 2.25vw, .72rem);
+    line-height: 1.48;
+  }
+
+  .story-text p { margin-bottom: 9px; }
+  .story-text .quote { margin-top: 10px; }
+  .story-end { font-size: .65rem; margin-top: 8px; }
+
+  .nav { gap: 6px; margin-top: 14px; }
+  .nav button { padding: 8px 9px; font-size: .7rem; min-height: 36px; }
+  .dots { gap: 5px; }
+  .dots button { width: 6px; height: 6px; }
+}
+
+@media (max-width: 370px) {
+  .masthead .eyebrow { letter-spacing: .18em; }
+  .page-right { padding: 10px 7px; }
+  .story-text { font-size: .52rem; line-height: 1.4; }
+  .chapter-title { font-size: .68rem; }
+  .nav button { font-size: .64rem; padding: 7px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: .01ms !important;
-    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
   }
 }
 </style>
 </head>
 
 <body>
+<div class="outer-ornament one" aria-hidden="true">❦</div>
+<div class="outer-ornament two" aria-hidden="true">❧</div>
+
+<audio id="music" loop preload="auto">
+  <source src="./Fairy%20Of%20The%20Forest.m4a" type="audio/mp4">
+</audio>
+
 <main>
-  <header class="top">
-    <div class="brand">Z E L L A</div>
-    <div class="line"></div>
-    <div class="eyebrow">A LITTLE LETTER FROM PIKO</div>
-    <h1>Selamat Malam,<br>Sayangku ♡</h1>
-    <p class="intro">Untuk sayang, yang selalu istimewa di hatiku.</p>
+  <header class="masthead">
+    <div class="eyebrow">A Gothic Romance · An Eternal Promise</div>
+    <h1>Zella <span>&amp;</span> Piko</h1>
+    <p>Two hearts beneath the shadow of the ancient tree</p>
   </header>
 
-  <article class="letter">
-    <div class="sender">
-      <div class="sender-label">SURAT KECIL DARI PIKO UNTUK</div>
-      <div class="sender-name">♡ ZELLA ♡</div>
-      <div class="sender-note">Ditulis dengan sepenuh hati</div>
-    </div>
+  <div class="book-frame">
+    <section class="book" id="book" aria-label="Buku terbuka Zella dan Piko">
 
-    <div class="message">
-      <p class="greeting">Selamat malam, sayangku. ♡</p>
+      <!-- HALAMAN KIRI: ILUSTRASI MAWAR SVG -->
+      <div class="page-left">
+        <div class="artwork">
+          <div class="art-glow"></div>
+          <div class="moon"></div>
+          <div class="art-corner top">❦</div>
 
-      <p>Sebelum sayang tidur, aku mau bilang terima kasih. Terima kasih sudah menjadi bagian paling indah dari hari-hariku. Terima kasih sudah hadir, sudah sabar, sudah tetap di sini.</p>
+          <svg class="rose-svg" viewBox="0 0 420 530" role="img" aria-label="Ilustrasi mawar merah gothic">
+            <defs>
+              <radialGradient id="petal" cx="35%" cy="28%" r="75%">
+                <stop offset="0%" stop-color="#d65b68"/>
+                <stop offset="35%" stop-color="#9c2034"/>
+                <stop offset="72%" stop-color="#4c101c"/>
+                <stop offset="100%" stop-color="#160b0e"/>
+              </radialGradient>
+              <radialGradient id="petalLight" cx="35%" cy="25%" r="80%">
+                <stop offset="0%" stop-color="#e37c82"/>
+                <stop offset="38%" stop-color="#a62b3d"/>
+                <stop offset="100%" stop-color="#300b13"/>
+              </radialGradient>
+              <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#818273"/>
+                <stop offset="42%" stop-color="#37413a"/>
+                <stop offset="100%" stop-color="#101814"/>
+              </linearGradient>
+              <linearGradient id="stem" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#111713"/>
+                <stop offset="50%" stop-color="#65705b"/>
+                <stop offset="100%" stop-color="#151a15"/>
+              </linearGradient>
+              <filter id="roseShadow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="5"/>
+              </filter>
+              <g id="roseBloom">
+                <ellipse cx="0" cy="0" rx="57" ry="43" fill="#21080e"/>
+                <path d="M-5 16 C-77 37 -91 -13 -43 -43 C-61 -5 -31 1 -5 16Z" fill="url(#petal)"/>
+                <path d="M-8 16 C-73 -6 -49 -66 -12 -50 C-37 -28 -20 -6 -8 16Z" fill="url(#petalLight)"/>
+                <path d="M-7 13 C-26 -59 35 -75 49 -39 C18 -45 3 -10 -7 13Z" fill="url(#petal)"/>
+                <path d="M-1 17 C29 -37 79 -9 63 25 C45 -1 17 5 -1 17Z" fill="url(#petalLight)"/>
+                <path d="M-3 18 C-3 57 -60 51 -66 20 C-42 31 -20 23 -3 18Z" fill="url(#petal)"/>
+                <path d="M-5 15 C-45 -7 -16 -48 12 -37 C-8 -24 -1 -4 -5 15Z" fill="#72162a"/>
+                <path d="M-4 14 C-14 -17 19 -39 39 -15 C20 -19 11 3 -4 14Z" fill="#b32b42"/>
+                <path d="M-4 14 C5 -10 30 -3 27 14 C17 3 6 15 -4 14Z" fill="#4a0b19"/>
+                <path d="M-3 13 C-1 -3 15 -9 19 3 C10 -1 4 8 -3 13Z" fill="#d25767"/>
+                <path d="M-4 13 C-8 3 1 -2 8 2 C2 3 1 8 -4 13Z" fill="#27080e"/>
+                <path d="M-4 13 Q5 4 8 8 Q2 13 -4 13Z" fill="#e0787d"/>
+              </g>
+            </defs>
 
-      <p>Aku tau hari ini pasti melelahkan buat sayang, banyak pikiran, banyak hal yang harus sayang hadapi. Jadi malam ini, aku mohon, lepaskan semuanya dulu ya, jangan bawa lelah itu ke dalam mimpi sayang. Tidurlah yang nyenyak, istirahat yang cukup. Jangan begadang terlalu larut lagi ya, sayang.</p>
+            <!-- Batang utama -->
+            <path d="M208 472 C217 398 205 326 219 259 C226 210 217 163 237 125"
+              fill="none" stroke="url(#stem)" stroke-width="8" stroke-linecap="round"/>
+            <path d="M208 383 C164 340 136 301 126 259"
+              fill="none" stroke="url(#stem)" stroke-width="5" stroke-linecap="round"/>
+            <path d="M215 325 C264 297 285 261 300 222"
+              fill="none" stroke="url(#stem)" stroke-width="5" stroke-linecap="round"/>
 
-      <p>Aku ingin sayang selalu sehat, karena sehatnya sayang adalah tenangku juga.</p>
+            <!-- Daun -->
+            <path d="M198 380 C119 389 74 342 83 300 C138 300 188 333 198 380Z" fill="url(#leaf)"/>
+            <path d="M193 376 Q138 338 91 307" fill="none" stroke="#93917a" stroke-width="2" opacity=".7"/>
+            <path d="M219 339 C248 272 302 272 328 291 C310 338 264 357 219 339Z" fill="url(#leaf)"/>
+            <path d="M224 337 Q272 309 322 295" fill="none" stroke="#9b9981" stroke-width="2" opacity=".6"/>
+            <path d="M219 271 C154 266 130 219 151 185 C198 204 220 235 219 271Z" fill="url(#leaf)"/>
+            <path d="M216 266 Q188 220 154 190" fill="none" stroke="#a09b84" stroke-width="2" opacity=".65"/>
+            <path d="M213 425 C260 392 296 412 304 438 C269 461 238 449 213 425Z" fill="url(#leaf)"/>
+            <path d="M217 428 Q265 431 300 438" fill="none" stroke="#93917a" stroke-width="2" opacity=".5"/>
 
-      <p>Aku mungkin bukan orang yang paling pandai merangkai kata, tapi satu hal yang selalu aku syukuri, hal-hal sederhana dari sayang. Cara sayang ngobrol, cara sayang perhatian, bahkan diamnya sayang pun selalu berhasil membuat hariku jauh lebih baik.</p>
+            <!-- Mawar besar -->
+            <ellipse cx="221" cy="144" rx="93" ry="84" fill="#8d182a" opacity=".26" filter="url(#roseShadow)"/>
+            <g transform="translate(220 145) scale(1.24)">
+              <use href="#roseBloom"/>
+            </g>
 
-      <p>Sayang, semoga kita bisa terus seperti ini ya. Saling menjaga, saling memahami, saling menguatkan. Seberat apa pun yang kita hadapi nanti, kita hadapi sama-sama. Aku di sini, akan selalu di sini buat sayang.</p>
+            <!-- Mawar kedua -->
+            <ellipse cx="139" cy="301" rx="65" ry="56" fill="#80172a" opacity=".24" filter="url(#roseShadow)"/>
+            <g transform="translate(140 298) rotate(-19) scale(.88)">
+              <use href="#roseBloom"/>
+            </g>
 
-      <p>Selamat malam, sayangku. Tidur nyenyak, mimpi indah ya. Jangan lupa, di setiap hembusan nafasku, aku sangat mencintai sayang.</p>
-    </div>
+            <!-- Kelopak merah -->
+            <path d="M290 104 Q312 113 302 131 Q281 127 290 104Z" fill="#a52338"/>
+            <path d="M106 214 Q126 224 113 240 Q95 233 106 214Z" fill="#6d1425"/>
+            <path d="M300 355 Q318 367 304 380 Q288 368 300 355Z" fill="#8f2033"/>
+            <circle cx="104" cy="169" r="3" fill="#c74454"/>
+            <circle cx="325" cy="173" r="2.5" fill="#a72d41"/>
+            <circle cx="93" cy="373" r="2" fill="#c74454"/>
+            <circle cx="288" cy="402" r="3" fill="#a72d41"/>
 
-    <div class="signature">
-      Selalu sayang,<br>
-      <span>hanya sayang.</span> ♡
-    </div>
+            <!-- Hạt trang trí -->
+            <g fill="#b5a09c" opacity=".72">
+              <circle cx="104" cy="195" r="3"/>
+              <circle cx="96" cy="205" r="2"/>
+              <circle cx="89" cy="215" r="2.5"/>
+              <circle cx="312" cy="255" r="2.5"/>
+              <circle cx="323" cy="264" r="2"/>
+              <circle cx="334" cy="272" r="3"/>
+            </g>
+          </svg>
 
-    <div class="end-mark">━━━━ ♡ ━━━━</div>
-  </article>
+          <div class="art-caption" id="artCaption">
+            A love beyond darkness<br><span>forever begins here</span>
+          </div>
+          <div class="art-corner bottom">❦</div>
+        </div>
+      </div>
 
-  <footer>
-    MADE WITH <span>♥</span> BY PIKO<br>
-    FOR SOMEONE SPECIAL IN THE ZELLA UNIVERSE
+      <!-- HALAMAN KANAN: CERITA -->
+      <div class="page-right">
+        <div class="story-wrap" id="storyWrap">
+          <div class="chapter-label" id="chapterLabel">Chapter One</div>
+          <h2 class="chapter-title" id="chapterTitle">The Tree of Shadows</h2>
+          <div class="rule"></div>
+          <div class="story-text" id="storyText"></div>
+        </div>
+      </div>
+
+    </section>
+  </div>
+
+  <nav class="nav" aria-label="Navigasi bab">
+    <button id="previous" type="button">← Sebelumnya</button>
+    <div class="dots" id="dots"></div>
+    <button id="following" type="button">Berikutnya →</button>
+  </nav>
+
+  <p class="hint">Geser buku ke kiri atau kanan untuk membuka bab berikutnya</p>
+
+  <footer class="footer">
+    ZELLA LOVE · GOTHIC ROMANCE<br>
+    <span class="red">Even darkness cannot destroy a love that is true.</span><br>
+    Eight chapters · One family · Forever
   </footer>
 </main>
 
-<div id="hearts" aria-hidden="true"></div>
-
 <script>
 (() => {
-  const container = document.getElementById("hearts");
+  "use strict";
 
-  function makeHeart() {
-    if (document.hidden) return;
+  const chapters = [
+    {
+      title: "The Tree of Shadows",
+      caption: "The night they met",
+      text: [
+        "Pada malam ketika bulan menggantung merah di langit, Zella memasuki hutan yang bahkan dihindari oleh penduduk desa. Kabut merayap di antara pepohonan, sementara akar-akar raksasa mencengkeram tanah seperti jari makhluk yang sedang tidur.",
+        "Tiba-tiba terdengar langkah kaki dari balik kabut. Zella menoleh dan melihat bayangan tinggi bergerak di antara pepohonan. Ia berlari, tetapi akar hitam melilit kakinya. Tepat saat bayangan itu menerjang, seorang pria muncul membawa lentera dan menariknya menjauh.",
+        "Namanya Piko. Tatapannya tenang, tetapi ada ketakutan yang tersembunyi di matanya. Ia memperingatkan Zella agar tidak kembali ke hutan itu. Namun ketika Zella bertanya mengapa ia sendiri berada di sana, Piko hanya menjawab, \"Karena ada hal yang belum selesai.\"",
+        "Mereka belum tahu bahwa pertemuan singkat itu akan mengubah takdir mereka selamanya."
+      ],
+      quote: "Di bawah bulan merah, dua takdir mulai terjalin."
+    },
+    {
+      title: "The Stranger in the Mist",
+      caption: "A stranger, a secret",
+      text: [
+        "Piko mengantar Zella menuju desa tua di balik bukit. Sepanjang perjalanan, bisikan aneh terdengar dari kabut. Setiap kali Zella menoleh, hanya ada pepohonan dan bayangan yang memanjang di tanah.",
+        "Piko jarang berbicara, tetapi selalu memastikan Zella tidak tertinggal. Ketika Zella terpeleset di jalan berbatu, Piko segera mengulurkan tangan dan menggenggamnya lebih lama daripada yang diperlukan.",
+        "Di sebuah jembatan kayu, Zella melihat bekas luka gelap di pergelangan tangan Piko. Saat ia bertanya, wajah pria itu berubah. \"Ada hal-hal yang lebih baik tidak kamu ketahui,\" katanya.",
+        "\"Aku tidak takut pada rahasiamu,\" jawab Zella. \"Aku hanya takut kamu akan menghilang sebelum aku sempat mengenalmu.\" Piko terdiam. Tidak ada seorang pun yang pernah mengatakan sesuatu seperti itu kepadanya.",
+        "Di kejauhan, lonceng desa berdentang tiga kali. Piko mempercepat langkahnya. Malam belum selesai, dan sesuatu sedang memburu mereka."
+      ],
+      quote: "Terkadang, hati mengenali seseorang sebelum pikiran memahami alasannya."
+    },
+    {
+      title: "The Secret Beneath the Roots",
+      caption: "The curse awakens",
+      text: [
+        "Di rumah tua milik Piko, Zella menemukan buku bersampul hitam yang tersembunyi di balik papan lantai. Halamannya dipenuhi tulisan kuno dan gambar pohon dengan akar yang menjalar sampai ke sebuah makam.",
+        "Piko akhirnya mengungkapkan rahasia keluarganya. Berpuluh-puluh tahun sebelumnya, leluhurnya membuat perjanjian dengan kekuatan yang tinggal di hutan. Sejak saat itu, setiap generasi harus membayar harga yang mengerikan.",
+        "Bekas luka di pergelangan tangan Piko adalah tanda bahwa waktunya hampir tiba. Pada bulan merah berikutnya, kekuatan itu akan datang untuk menagih janji terakhir.",
+        "Zella seharusnya melarikan diri. Namun, ketika melihat kesedihan yang selama ini disembunyikan Piko, ia justru menggenggam tangannya. \"Kamu tidak harus menghadapi semuanya sendirian.\"",
+        "Jauh di dalam hutan, pohon purba itu berderak. Akar-akarnya mulai bergerak, seolah mengetahui bahwa seseorang telah menemukan rahasia yang dijaganya."
+      ],
+      quote: "Kepercayaan dapat membuka jalan keluar dari kegelapan."
+    },
+    {
+      title: "A Love Against the Darkness",
+      caption: "The heart chooses",
+      text: [
+        "Sejak malam itu, Zella dan Piko menghabiskan waktu mencari cara untuk memutus kutukan. Mereka membaca catatan kuno, menelusuri reruntuhan kapel, dan mengikuti jejak simbol pada batu-batu tua.",
+        "Suatu malam, makhluk bertudung hitam mengepung mereka di tengah hutan. Piko menyuruh Zella berlari, sementara ia berdiri menghadapi bahaya. Namun Zella menolak meninggalkannya.",
+        "Mereka berlari bersama menembus hujan dan berlindung di kapel yang hampir runtuh. Di sana, di bawah cahaya satu lilin, Piko akhirnya mengungkapkan ketakutan terbesarnya.",
+        "\"Aku takut kehilanganmu,\" bisiknya. \"Seumur hidupku, aku belajar untuk tidak mencintai siapa pun agar mereka tetap aman.\"",
+        "Zella menyentuh pipinya. \"Mencintai bukan berarti kita tidak akan takut. Artinya kita memilih untuk tetap bersama.\" Piko mencium keningnya. Di tengah dunia yang gelap, mereka menemukan keberanian untuk mencintai."
+      ],
+      quote: "Cinta adalah alasan untuk tetap bertahan."
+    },
+    {
+      title: "The Last Night of the Curse",
+      caption: "The final battle",
+      text: [
+        "Bulan merah kembali muncul. Langit bergetar oleh petir, dan pohon purba memanggil Piko dengan suara seperti ribuan bisikan. Mereka tahu malam itu adalah kesempatan terakhir.",
+        "Di bawah akar terbesar, mereka menemukan batu hitam yang menjadi sumber kutukan. Piko harus menghancurkannya, tetapi setiap langkah membuat tanda di tangannya menyala semakin terang.",
+        "Zella membuka halaman terakhir buku kuno dan menemukan kalimat yang selama ini tersembunyi: kutukan hanya dapat dipatahkan ketika pewarisnya menolak menyerahkan masa depan kepada rasa takut.",
+        "Bayangan menyerang Piko dan membuatnya jatuh berlutut. Zella berlari ke arahnya dan menggenggam tangannya. Bersama-sama, mereka memilih kehidupan, bukan pengorbanan yang dipaksakan oleh masa lalu.",
+        "Batu hitam itu retak. Cahaya putih menyebar melalui akar-akar raksasa, dan jeritan panjang memenuhi hutan. Ketika semuanya sunyi, bulan merah perlahan memudar. Kutukan telah berakhir."
+      ],
+      quote: "Masa lalu boleh menulis luka, tetapi masa depan tetap milik kita."
+    },
+    {
+      title: "When the Moon Turns Silver",
+      caption: "A promise at dawn",
+      text: [
+        "Pagi datang untuk pertama kalinya tanpa kabut hitam. Burung-burung kembali bernyanyi, dan cahaya matahari menyentuh tanah yang selama puluhan tahun diselimuti ketakutan.",
+        "Piko dan Zella berdiri di depan pohon tua. Akar-akar yang dahulu bergerak kini diam, sementara daun-daun kecil tumbuh di antara batangnya. Hutan itu tidak lagi menjadi penjara bagi takdir siapa pun.",
+        "Piko menggenggam kedua tangan Zella. \"Aku tidak bisa menjanjikan hidup yang selalu mudah. Tetapi aku ingin menghadapi apa pun yang menunggu kita bersamamu.\"",
+        "Zella tersenyum dengan mata berkaca-kaca. \"Aku tidak membutuhkan kehidupan yang sempurna. Aku hanya ingin rumah tempat kita bisa pulang, dan seseorang yang tetap memilihku bahkan setelah hari yang sulit.\"",
+        "Di bawah langit yang kembali cerah, mereka berjanji akan membangun kehidupan yang tidak ditentukan oleh kutukan, melainkan oleh pilihan kecil untuk saling menjaga."
+      ],
+      quote: "Setelah malam terpanjang, cahaya paling lembut terasa seperti keajaiban."
+    },
+    {
+      title: "Until Death and Beyond",
+      caption: "The wedding vow",
+      text: [
+        "Beberapa waktu kemudian, sebuah pernikahan sederhana berlangsung di kapel kecil dekat desa. Tidak ada istana megah atau mahkota emas. Hanya bunga mawar merah, lilin putih, dan orang-orang yang menyaksikan dua hati memilih satu sama lain.",
+        "Zella mengenakan gaun putih sederhana dengan detail hitam di bagian lengan. Piko berdiri di hadapannya, berusaha menyembunyikan air mata ketika melihat perempuan yang telah mengubah hidupnya berjalan mendekat.",
+        "\"Aku pernah percaya bahwa hidupku hanya akan berakhir dalam kegelapan,\" kata Piko. \"Lalu kamu datang dan menunjukkan bahwa masih ada pagi yang menunggu.\"",
+        "Zella menggenggam tangannya. \"Aku tidak berjanji setiap hari akan mudah. Aku berjanji akan mendengarkanmu, mendampingimu, dan mengingatkanmu bahwa kamu tidak harus kuat setiap saat.\"",
+        "Mereka bertukar cincin dan berciuman di bawah lengkungan mawar. Lonceng kapel berdentang. Bukan sebagai peringatan, melainkan sebagai awal kehidupan baru."
+      ],
+      quote: "Bukan sampai akhir cerita, melainkan sampai setiap hari berikutnya."
+    },
+    {
+      title: "Our Little Forever",
+      caption: "A home beyond the shadows",
+      text: [
+        "Bertahun-tahun berlalu. Jauh dari hutan terlarang, Zella dan Piko menemukan rumah sederhana di pedesaan. Rumah itu berdiri di antara bukit hijau, kebun kecil, dan jalan setapak yang diselimuti embun setiap pagi.",
+        "Mereka memiliki dua anak. Putra sulung mereka tumbuh penuh rasa ingin tahu, selalu berlari keluar untuk melihat burung dan serangga di kebun. Adik perempuannya ceria, gemar memetik bunga, dan sering menyelipkan mawar kecil di rambut ibunya.",
+        "Hari-hari mereka tidak selalu sempurna. Atap terkadang bocor ketika hujan, pekerjaan rumah menumpuk, dan anak-anak sesekali bertengkar karena hal-hal kecil. Namun rumah itu selalu dipenuhi tawa, makanan hangat, dan pelukan yang tulus.",
+        "Pada suatu senja, Piko duduk di beranda bersama Zella. Anak-anak mereka tertidur setelah seharian bermain. Udara pedesaan terasa sejuk, sementara cahaya matahari terakhir menghilang di balik bukit.",
+        "\"Pernahkah kamu menyesal masuk ke hutan malam itu?\" tanya Piko. Zella tersenyum dan menyandarkan kepala di bahunya. \"Tidak. Karena semua jalan yang menakutkan itu akhirnya membawaku pulang kepadamu.\"",
+        "Piko menggenggam tangannya. Ia teringat pohon purba, bulan merah, dan segala ketakutan yang dahulu memenuhi hidupnya. Semua itu terasa jauh sekarang. Di hadapannya ada rumah kecil, dua anak yang mereka cintai, dan perempuan yang masih ia pilih setiap hari.",
+        "Malam turun dengan tenang. Tidak ada bayangan yang mengejar, tidak ada kutukan yang menunggu. Hanya angin, suara jangkrik, dan cahaya hangat dari jendela rumah mereka.",
+        "Kisah Zella dan Piko berakhir bukan di sebuah kerajaan, melainkan di rumah sederhana di pedesaan yang sejuk. Mereka menemukan kekayaan yang tidak pernah bisa diberikan oleh sihir: keluarga, kedamaian, dan cinta yang tumbuh semakin kuat seiring waktu."
+      ],
+      quote: "And they lived not in a perfect world, but in a home filled with love. Forever."
+    }
+  ];
 
-    const heart = document.createElement("span");
-    heart.className = "heart";
-    heart.textContent = Math.random() > 0.5 ? "♡" : "✧";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = (12 + Math.random() * 10) + "px";
-    heart.style.color = Math.random() > 0.5 ? "#ff4fd8" : "#00eaff";
-    heart.style.animationDuration = (8 + Math.random() * 6) + "s";
+  const chapterNames = [
+    "One", "Two", "Three", "Four",
+    "Five", "Six", "Seven", "Eight"
+  ];
 
-    container.appendChild(heart);
-    setTimeout(() => heart.remove(), 15000);
+  const chapterLabel = document.getElementById("chapterLabel");
+  const chapterTitle = document.getElementById("chapterTitle");
+  const storyText = document.getElementById("storyText");
+  const storyWrap = document.getElementById("storyWrap");
+  const artCaption = document.getElementById("artCaption");
+  const previous = document.getElementById("previous");
+  const following = document.getElementById("following");
+  const dotsContainer = document.getElementById("dots");
+  const book = document.getElementById("book");
+  const music = document.getElementById("music");
+
+  let current = 0;
+  let startX = 0;
+  let startY = 0;
+  let startTime = 0;
+  let tracking = false;
+  let musicStarted = false;
+
+  const dots = chapters.map((chapter, index) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.setAttribute("aria-label", `Bab ${index + 1}`);
+    button.addEventListener("click", () => {
+      showChapter(index);
+      startMusic();
+    });
+    dotsContainer.appendChild(button);
+    return button;
+  });
+
+  function showChapter(index) {
+    current = Math.max(0, Math.min(chapters.length - 1, index));
+    const chapter = chapters[current];
+
+    chapterLabel.textContent =
+      `Chapter ${chapterNames[current]} · Bab ${String(current + 1).padStart(2, "0")}`;
+
+    chapterTitle.textContent = chapter.title;
+    artCaption.innerHTML =
+      `${chapter.caption}<br><span>Zella &amp; Piko</span>`;
+
+    storyText.replaceChildren();
+
+    chapter.text.forEach(paragraph => {
+      const p = document.createElement("p");
+      p.textContent = paragraph;
+      storyText.appendChild(p);
+    });
+
+    const quote = document.createElement("p");
+    quote.className = "quote";
+    quote.textContent = `“${chapter.quote}”`;
+    storyText.appendChild(quote);
+
+    const end = document.createElement("div");
+    end.className = "story-end";
+    end.textContent = "✦ ❦ ✦";
+    storyText.appendChild(end);
+
+    previous.disabled = current === 0;
+    following.disabled = current === chapters.length - 1;
+
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("active", i === current);
+      dot.setAttribute("aria-current", i === current ? "page" : "false");
+    });
+
+    storyWrap.scrollTop = 0;
   }
 
-  setInterval(makeHeart, 1200);
+  previous.addEventListener("click", () => {
+    showChapter(current - 1);
+    startMusic();
+  });
+
+  following.addEventListener("click", () => {
+    showChapter(current + 1);
+    startMusic();
+  });
+
+  // Swipe horizontal pada seluruh buku.
+  book.addEventListener("pointerdown", event => {
+    if (event.pointerType === "mouse" && event.button !== 0) return;
+    startX = event.clientX;
+    startY = event.clientY;
+    startTime = Date.now();
+    tracking = true;
+  }, { passive: true });
+
+  book.addEventListener("pointerup", event => {
+    if (!tracking) return;
+    tracking = false;
+
+    const dx = event.clientX - startX;
+    const dy = event.clientY - startY;
+    const elapsed = Date.now() - startTime;
+
+    if (elapsed > 1200) return;
+    if (Math.abs(dx) < 45) return;
+    if (Math.abs(dx) < Math.abs(dy) * 1.2) return;
+
+    showChapter(current + (dx < 0 ? 1 : -1));
+    startMusic();
+  }, { passive: true });
+
+  book.addEventListener("pointercancel", () => {
+    tracking = false;
+  }, { passive: true });
+
+  // Musik: coba autoplay, lalu coba kembali setelah interaksi.
+  function startMusic() {
+    if (musicStarted) return;
+
+    const attempt = music.play();
+
+    if (attempt && typeof attempt.then === "function") {
+      attempt.then(() => {
+        musicStarted = true;
+      }).catch(() => {
+        // Browser HP mungkin memerlukan sentuhan pengguna.
+      });
+    }
+  }
+
+  document.addEventListener("pointerdown", startMusic, { once: true });
+  document.addEventListener("touchstart", startMusic, {
+    once: true,
+    passive: true
+  });
+  document.addEventListener("keydown", startMusic, { once: true });
+
+  showChapter(0);
+  startMusic();
 })();
 </script>
 </body>
 </html>
-```
